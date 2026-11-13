@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NETS Support QR Code</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background: #f5f7fa;
+    }
+    #qrcode {
+      display: flex;
+      justify-content: center;
+      margin: 25px auto;
+    }
+    button {
+      padding: 12px 24px;
+      background: #0056b3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>NETS Support Email</h2>
+  <p>Scan to email eperolehansupport@rac.gov.my</p>
+
+  <div id="qrcode"></div>
+
+  <button onclick="downloadQR()">Download QR Code</button>
+
+  <script>
+    new QRCode(document.getElementById("qrcode"), {
+      text: "mailto:support@netsinnovative.com",
+      width: 300,
+      height: 300,
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    function downloadQR() {
+      const canvas = document.querySelector("#qrcode canvas");
+      if (!canvas) {
+        alert("QR code not ready.");
+        return;
+      }
+
+      const link = document.createElement("a");
+      link.download = "NETS_Support_QR.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+  </script>
+</body>
+</html>
